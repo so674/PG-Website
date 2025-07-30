@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e6f9f5;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: flex-end;
+      background-color: rgb(196, 236, 227);
+      padding: 15px 30px;
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: white;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      background-color: #2c80b4;
+    }
+
+    /* Page Title */
+    .page-title {
+      text-align: center;
+      margin: 40px 0 10px;
+      font-size: 30px;
+      color: #005252;
+    }
+
+/* Food & Kitchen Grid */
+    .food-section {
+      position: relative;
+      padding: 40px;
+      color: white;
+  z-index: 1;
+    }
+    .food-section::before {
+    content: "";
+    background-image: url('https://tse4.mm.bing.net/th/id/OIP.odVgRB6gyRrwTjm4wG4z1gHaE7?pid=Api&P=0&h=180');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(8px);
+    opacity: 0.7;
+    z-index: -1; /* behind the content */
+    border-radius: 10px;
+}
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      z-index: 2;
+
+    }
+
+    .food-item {
+      background-color: rgba(255, 255, 255, 0.8); /* light background on blurred bg */
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    .food-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .food-item h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .food-item p {
+      font-size: 14px;
+      color: #555;
+    }
+    
+</style>
+<body>
+   <nav class="navbar">
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="Occupancy.html">Occupancy</a></li>
+    <li><a href="Food & Kitchen.html">Food & Kitchen</a></li>
+    <li><a href="Common Amenities.html">Common Amenities</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+  <!-- Page Title -->
+  <div class="page-title"><h3>Food & Kitchen Facilities</div></h3>
+
+  <!-- Food Section -->
+  <section class="food-section">
+    <div class="food-grid">
+      <div class="food-item">
+        <img src="https://img.freepik.com/premium-photo/3d-rendered-delicious-platter-omelet-recipe-tomato-onion-closeup-shot_1066261-105021.jpg" alt="Breakfast">
+        <img src="https://mymorningmocha.com/wp-content/uploads/2022/11/Chicken-chow-mein.jpg" alt="Breakfast">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.i8ochRDeLhy5OpH4hjcpngHaDt?pid=Api&P=0&h=180" alt="Breakfast">
+        
+        <h3>Breakfast</h3>
+        <p>Healthy and delicious Indian breakfast served fresh every morning.</p>
+      </div>
+      <div class="food-item">
+        <img src="https://cdn.pixabay.com/photo/2023/10/01/16/21/ai-generated-8287729_960_720.jpg" alt="Lunch">
+        <img src="https://www.indianveggiedelight.com/wp-content/uploads/2020/06/veg-fried-rice-featured.jpg" alt="Lunch">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.yChxqPUYkIIG1YTIuv4RKAHaGK?pid=Api&P=0&h=180" alt="Lunch">
+        <h3>Lunch</h3> 
+        <p>Nutritious lunch with vegetarian and non-vegetarian options daily.</p>
+      </div>
+      <div class="food-item">
+        <img src="https://img.freepik.com/premium-photo/indian-thali-variety-dishes-including-dal-sabzi-roti-rice-sweet-gulab-jamun-beautifully-presented_1266280-97398.jpg?w=2000" alt="Dinner">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.Scsy_52FXa7RnKQjxP8ATwHaEK?pid=Api&P=0&h=180" alt="Dinner">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.r_TI0wt1p95xbc6LzjRtHwAAAA?pid=Api&P=0&h=180" alt="Dinner">
+    
+        <h3>Dinner</h3>
+        <p>Hot and homely dinner served at night, cooked with hygiene in mind.</p>
+      </div>
+      
+    </div>
+  </section>
+
+</body>
+</html>

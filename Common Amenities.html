@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Baam Tara PG - Amenities</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background-color: #e0f7f7;
+      font-family: Arial, sans-serif;
+    }
+
+    /* 🔹 NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: rgb(196, 236, 227);
+      padding: 15px 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: white;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      background-color: #2c80b4;
+    }
+
+    /* 🔹 Animated Text Section */
+    .animated-section {
+      text-align: center;
+      padding: 30px 10px 10px;
+    }
+
+    .animated-section h2 {
+      font-size: 26px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    #animated-text {
+      font-weight: bold;
+      font-size: 20px;
+      color: #cd6228;
+    }
+
+    /* 🔹 Amenities Section */
+    .amenities-section {
+      background-color: #ffffff;
+      padding: 40px 20px;
+      border-radius: 10px;
+      max-width: 1000px;
+      margin: 30px auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .amenities-section h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 25px;
+    }
+
+    .amenity {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .amenity:hover {
+      transform: translateY(-5px);
+    }
+
+    .amenity img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 10px;
+    }
+
+    .amenity p {
+      margin: 0;
+      font-size: 15px;
+      color: #444;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!--  NAVBAR -->
+ <nav class="navbar">
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="Occupancy.html">Occupancy</a></li>
+    <li><a href="Food & Kitchen.html">Food & Kitchen</a></li>
+    <li><a href="Common Amenities.html">Common Amenities</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+
+  <!--  Animated Text -->
+  <div class="animated-section">
+    <h2>Baam Tara PG Gives You</h2>
+    <span id="animated-text"></span>
+  </div>
+
+  <!--  Amenities Section -->
+  <section class="amenities-section">
+    <h2>Common Area and Amenities</h2>
+    <div class="amenities-grid">
+      <div class="amenity">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.ueAmV7Jgsw-_7XaJAgjjyAHaEK?pid=Api&P=0&h=180" alt="WiFi">
+        <p>Wi-Fi</p>
+      </div>
+      <div class="amenity">
+        <img src="https://img.freepik.com/premium-photo/cartoon-mopbroom-dustpan-white-background-3d-rendering-3d-illustration_778569-4351.jpg?w=1380" alt="Room Cleaning">
+        <p>Room Cleaning</p>
+      </div>
+      <div class="amenity">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.WMOm68fyI04tMAk7ZoBerwHaHa?pid=Api&P=0&h=180" alt="Washing Machine">
+        <p>Washing Machine</p>
+      </div>
+      <div class="amenity">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.5WPtP88hYVtnCHPRPZZO0QHaHa?pid=Api&P=0&h=180" alt="Fridge">
+        <p>Fridge</p>
+      </div>
+      <div class="amenity">
+        <img src="https://img-new.cgtrader.com/items/2325639/3ba5d0f92a/plastic-water-bottle-15-liter-3d-model-max-obj-fbx.jpg" alt="Water Source">
+        <p>Water Source</p>
+      </div>
+    </div>
+  </section>
+
+  <!--  JS for Typing Animation -->
+  <script>
+    const items = [
+      "Free WiFi",
+      "Washing Machine",
+      "Fridge",
+      "Free Water",
+      "Free Cleaning"
+    ];
+
+    let itemIndex = 0;
+    let charIndex = 0;
+    const target = document.getElementById("animated-text");
+
+    function typeEffect() {
+      if (charIndex < items[itemIndex].length) {
+        target.textContent += items[itemIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 100);
+      } else {
+        setTimeout(eraseEffect, 1500);
+      }
+    }
+
+    function eraseEffect() {
+      if (charIndex > 0) {
+        target.textContent = items[itemIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseEffect, 50);
+      } else {
+        itemIndex = (itemIndex + 1) % items.length;
+        setTimeout(typeEffect, 500);
+      }
+    }
+
+    typeEffect();
+  </script>
+<!-- 900 -->
+</body>
+</html>

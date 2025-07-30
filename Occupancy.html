@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Occupancy - Baam Tara PG</title>
+  <style>
+      @media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .room-card, .card {
+    width: 100%;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.navbar {
+      display: flex;
+      justify-content: flex-end;
+      background-color: rgb(196, 236, 227);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: white;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      background-color: #2c80b4;
+    }
+
+    .main {
+      padding-top: 40px;
+    }
+
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: rgb(14, 203, 203);
+      font-family: Arial, sans-serif;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #004d4d;
+    }
+
+    .filter-bar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .filter-btn:hover {
+      background-color: #2c80b4;
+    }
+
+    .room-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .room-card {
+      background-color: #fff;
+      width: 300px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .room-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .room-card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 180px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .room-card h3 {
+      margin: 10px 0;
+      color: #007c91;
+    }
+
+    .room-info p {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    .status {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .available {
+      color: green;
+    }
+
+    .occupied {
+      color: red;
+    }
+
+    .book-btn {
+      margin-top: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .book-btn:hover {
+      background-color: #218838;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      margin: 100px auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .close-btn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+    }
+
+    .whatsapp-contact {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .whatsapp-contact a {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .whatsapp-contact a:hover {
+      background-color: #1ebc59;
+    }
+
+    @media (max-width: 768px) {
+      .room-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+   <nav class="navbar">
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="Occupancy.html">Occupancy</a></li>
+    <li><a href="Food & Kitchen.html">Food & Kitchen</a></li>
+    <li><a href="Common Amenities.html">Common Amenities</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+  <h1>Occupancy at Baam Tara PG</h1>
+  <div class="filter-bar">
+    <button class="filter-btn" onclick="filterRooms('all')">All</button>
+    <button class="filter-btn" onclick="filterRooms('available')">Available</button>
+    <button class="filter-btn" onclick="filterRooms('occupied')">Occupied</button>
+  </div>
+
+  <div class="room-grid" id="roomContainer">
+    <!-- Room cards inserted here -->
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">Close</button>
+      <h3>Contact the Owner</h3>
+      <p><strong>Email:</strong> owner.pg@example.com</p>
+      <p><strong>Mobile:</strong> +91 98765 xxx10</p>
+    </div>
+  </div>
+
+  <!-- WhatsApp Contact Section
+  <div class="whatsapp-contact">
+    <a href="me/847892309"
+    <p>Need more info or want to book quickly?</p>
+   
+  </div> -->
+
+  <script>
+    const rooms = [
+      {
+        name: 'Single Room',
+        img: 'https://tse2.mm.bing.net/th/id/OIP.fMY9r319gRYCHmNG4BQacgHaE6?pid=Api&P=0&h=180',
+        people: '1 Person',
+        bathroom: 'Common Bathroom',
+        kitchen: 'No',
+        rent: '₹7,500/month',
+        status: 'available'
+      },
+      {
+        name: '2 Sharing Room',
+        img: 'https://tse1.mm.bing.net/th/id/OIP._9HdAV2phzd-nn2tkPO02AHaEc?pid=Api&P=0&h=180',
+        people: '2 People',
+        bathroom: 'Common Bathroom',
+        kitchen: 'No',
+        rent: '₹6,000/person',
+        status: 'occupied'
+      },
+      {
+        name: '3 Sharing Room',
+        img: 'https://tse3.mm.bing.net/th/id/OIP.e_3w-QJj5Ujl0cn1o9utPgHaE8?pid=Api&P=0&h=180',
+        people: '3 People',
+        bathroom: 'Common Bathroom',
+        kitchen: 'No',
+        rent: '₹5,000/person',
+        status: 'available'
+      },
+      {
+        name: 'Single Premium Room',
+        img: 'https://tse4.mm.bing.net/th/id/OIP.NkZgs389lLbvV_qTjudfIAHaEK?pid=Api&P=0&h=180',
+        people: '1 Person',
+        bathroom: 'Attached Bathroom',
+        kitchen: 'Personal Kitchen',
+        rent: '₹9,000/month',
+        status: 'available'
+      }
+    ];
+
+    function displayRooms(filter) {
+      const container = document.getElementById('roomContainer');
+      container.innerHTML = '';
+      const filtered = filter === 'all' ? rooms : rooms.filter(r => r.status === filter);
+
+      filtered.forEach(room => {
+        container.innerHTML += `
+          <div class="room-card">
+            <img src="${room.img}" alt="${room.name}">
+            <h3>${room.name}</h3>
+            <div class="room-info">
+              <p>🛏️ ${room.people}</p>
+              <p>🚿 ${room.bathroom}</p>
+              ${room.kitchen !== 'No' ? `<p>🍽️ ${room.kitchen}</p>` : ''}
+              <p>💰 ${room.rent}</p>
+              <p class="status ${room.status}">${room.status.charAt(0).toUpperCase() + room.status.slice(1)}</p>
+              <button class="book-btn" onclick="openModal()">Book Now</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function filterRooms(type) {
+      displayRooms(type);
+    }
+
+    function openModal() {
+      document.getElementById("bookingModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("bookingModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target === document.getElementById("bookingModal")) {
+        closeModal();
+      }
+    }
+
+    // Initial load
+    displayRooms('all');
+  </script>
+
+</body>
+</html>
